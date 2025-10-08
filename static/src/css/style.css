@@ -1,0 +1,20 @@
+.webxpay-button-container {
+    margin: 10px 0;
+    padding: 10px;
+    text-align: center;
+}
+
+#webxpay_checkout_button {
+    background-color: #4285f4;
+    border-color: #4285f4;
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+#webxpay_checkout_button:hover {
+    background-color: #357abd;
+    border-color: #357abd;
+}

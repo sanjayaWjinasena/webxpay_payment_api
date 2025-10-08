@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Payment Button Template -->
+    <template id="payment_webxpay_button" inherit_id="website_sale.payment">
+        <xpath expr="//div[@id='payment_method']" position="inside">
+            <div class="webxpay-button-container">
+                <button type="button" id="webxpay_redirect_button" class="btn btn-primary">
+                    Pay with WebXPay
+                </button>
+            </div>
+        </xpath>
+    </template>
+
+    <!-- Redirect Form Template -->
+    <template id="redirect_form">
+        <html>
+            <head>
+                <title>Redirecting to WebXPay...</title>
+            </head>
+            <body>
+                <form t-att-action="webxpay_url" method="post" id="webxpay_form">
+                    <input type="hidden" name="first_name" t-att-value="webxpay_data.get('first_name')"/>
+                    <input type="hidden" name="last_name" t-att-value="webxpay_data.get('last_name')"/>
+                    <input type="hidden" name="email" t-att-value="webxpay_data.get('email')"/>
+                    <input type="hidden" name="contact_number" t-att-value="webxpay_data.get('contact_number')"/>
+                    <input type="hidden" name="address_line_one" t-att-value="webxpay_data.get('address_line_one')"/>
+                    <input type="hidden" name="address_line_two" t-att-value="webxpay_data.get('address_line_two')"/>
+                    <input type="hidden" name="city" t-att-value="webxpay_data.get('city')"/>
+                    <input type="hidden" name="state" t-att-value="webxpay_data.get('state')"/>
+                    <input type="hidden" name="postal_code" t-att-value="webxpay_data.get('postal_code')"/>
+                    <input type="hidden" name="country" t-att-value="webxpay_data.get('country')"/>
+                    <input type="hidden" name="process_currency" t-att-value="webxpay_data.get('process_currency')"/>
+                    <input type="hidden" name="cms" t-att-value="webxpay_data.get('cms')"/>
+                    <input type="hidden" name="custom_fields" t-att-value="webxpay_data.get('custom_fields')"/>
+                    <input type="hidden" name="enc_method" t-att-value="webxpay_data.get('enc_method')"/>
+                    <input type="hidden" name="secret_key" t-att-value="webxpay_data.get('secret_key')"/>
+                    <input type="hidden" name="payment" t-att-value="webxpay_data.get('payment')"/>
+                </form>
+                <div style="text-align: center; margin-top: 20px;">
+                    <p>Redirecting to WebXPay payment gateway...</p>
+                </div>
+                <script>
+                    document.getElementById('webxpay_form').submit();
+                </script>
+            </body>
+        </html>
+    </template>
+
+    <!-- Payment Status Template -->
+    <template id="payment_status_template">
+        <t t-call="website.layout">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="alert alert-success" t-if="status == 'success'">
+                            <h3>Payment Successful!</h3>
+                            <p>Your transaction has been completed successfully.</p>
+                        </div>
+                        <div class="alert alert-danger" t-if="status == 'error'">
+                            <h3>Payment Failed!</h3>
+                            <p>There was an error processing your payment.</p>
+                        </div>
+                        <div class="alert alert-warning" t-if="status == 'cancel'">
+                            <h3>Payment Cancelled</h3>
+                            <p>Your payment has been cancelled.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+</odoo>

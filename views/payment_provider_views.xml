@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="payment_acquirer_form_webxpay" model="ir.ui.view">
+        <field name="name">payment.acquirer.form.webxpay</field>
+        <field name="model">payment.acquirer</field>
+        <field name="inherit_id" ref="payment.payment_acquirer_form"/>
+        <field name="arch" type="xml">
+            <xpath expr='//group[@name="acquirer"]' position='inside'>
+                <group attrs="{'invisible': [('provider', '!=', 'webxpay')]}">
+                    <field name="webxpay_public_key" 
+                           attrs="{'required': [('provider', '=', 'webxpay')]}"/>
+                    <field name="webxpay_secret_key" 
+                           attrs="{'required': [('provider', '=', 'webxpay')]}"/>
+                    <field name="webxpay_api_username" 
+                           attrs="{'required': [('provider', '=', 'webxpay')]}"/>
+                    <field name="webxpay_api_password" password="True"
+                           attrs="{'required': [('provider', '=', 'webxpay')]}"/>
+                    <field name="webxpay_callback_url" readonly="1"/>
+                </group>
+            </xpath>
+        </field>
+    </record>
+</odoo>

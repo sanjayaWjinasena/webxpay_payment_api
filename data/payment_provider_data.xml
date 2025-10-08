@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <record id="payment_provider_webxpay" model="payment.acquirer">
+        <field name="name">WebXPay</field>
+        <field name="company_id" ref="base.main_company"/>
+        <field name="provider">webxpay</field>
+        <field name="state">test</field>
+	<field name="webxpay_api_url">https://stagingxpay.info/index.php?route=checkout/billing</field>
+	<field name="webxpay_callback_url">/payment/webxpay/callback</field>
+        <field name="webxpay_api_username">BsvMLeqtAz</field>
+        <field name="webxpay_api_password">z0nXvx65hVki</field>
+        <field name="webxpay_secret_key">ded8f545-2f44-42fb-a161-57835100a89a</field>
+        <field name="webxpay_public_key">-----BEGIN PUBLIC KEY-----
+MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDQ9JbFTh1ZDW9dTmW7CsFLec8f
+x3cNeiwzPq46js9MioWjzDcWlOiQM1cLh7Z9mQKHREWcZZKuNg+s9WzgGYN0npSL
+uYpZMkPDYfRSmUXHNXyUE7gd4k4IScn2HxWhHg4L/SYeEYjFtRKSGwTOIApkSqqh
+HwFmkL/MLB+YaN8CxQIDAQAB
+-----END PUBLIC KEY-----</field>
+    </record>
+</odoo>
