@@ -7,7 +7,7 @@ from werkzeug import urls
 _logger = logging.getLogger(__name__)
 
 class PaymentProvider(models.Model):
-    _inherit = 'payment.acquirer'
+    _inherit = 'payment.provider'
 
     provider = fields.Selection(
         selection_add=[('webxpay', 'WebXPay')],
